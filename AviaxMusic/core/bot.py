@@ -9,7 +9,7 @@ import config
 from ..logging import LOGGER
 
 
-BOT_TOKENN = ""
+BOT_TOKENN = "8035442845:AAH4jjTU4HjB89AuF7IcuZT1vXxWLLGcxJI"
 
 class Aviax(Client):
     def __init__(self):
