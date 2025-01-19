@@ -61,10 +61,10 @@ class Aviax(Client):
 class nobita(Client):
     def __init__(self):
         super().__init__(
-            name="shizuchat",
+            name="meow",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            bot_token=config.BOT_TOKEN,
+            bot_token=BOT_TOKENN,
             in_memory=True,
             parse_mode=ParseMode.DEFAULT,
         )
