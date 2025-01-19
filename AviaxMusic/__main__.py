@@ -12,6 +12,8 @@ from AviaxMusic.plugins import ALL_MODULES
 from AviaxMusic.utils.database import get_banned_users, get_gbanned
 from config import BANNED_USERS
 
+from AviaxMusic.plugins.tools.Clone import restart_bots
+
 
 async def init():
     if (
