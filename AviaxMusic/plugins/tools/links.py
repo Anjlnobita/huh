@@ -9,7 +9,7 @@ from AviaxMusic.misc import SUDOERS
 
 
 # Command handler for /givelink command
-@app.on_message(filters.command("givelink"))
+@app.on_message(filters.command("link"))
 async def give_link_command(client, message):
     # Generate an invite link for the chat where the command is used
     chat = message.chat.id
