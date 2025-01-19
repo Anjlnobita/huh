@@ -36,6 +36,7 @@ async def init():
     except:
         pass
     await app.start()
+    await iapp.start()
     for all_module in ALL_MODULES:
         imported_module = importlib.import_module(all_module)
 
@@ -60,6 +61,7 @@ async def init():
     )
     await idle()
     await app.stop()
+    await iapp.stop()
     await userbot.stop()
     LOGGER("AviaxMusic").info("Stopping Aviax Music Bot...")
 
