@@ -13,32 +13,30 @@ from AviaxMusic.utils.nobii_ban import admin_filter
 links = {}
 
 # Monitor bot's admin status change
+
 @app.on_chat_member_updated()
 async def auto_join_on_admin_status(client, chat_member_update: ChatMemberUpdated):
-    if (
-        chat_member_update.new_chat_member.user.id == app.id
-        and chat_member_update.new_chat_member.status == ChatMemberStatus.ADMINISTRATOR
-    ):
-        chat_id = chat_member_update.chat.id
-        userbot = await get_assistant(chat_id)
-        userbot_id = userbot.id
-
-        # Attempt to invite the assistant automatically
-        try:
-            if chat_member_update.chat.username:
-                await userbot.join_chat(chat_member_update.chat.username)
-            else:
-                invite_link = await app.create_chat_invite_link(chat_id, expire_date=None)
-                await userbot.join_chat(invite_link.invite_link)
-            print(f"Assistant joined chat {chat_id} automatically.")
-        except InviteRequestSent:
+    if chat_member_update.new_chat_member and chat_member_update.new_chat_member.user:
+        if (chat_member_update.new_chat_member.user.id == app.id and
+            chat_member_update.new_chat_member.status == ChatMemberStatus.ADMINISTRATOR):
+            chat_id = chat_member_update.chat.id
+            userbot = await get_assistant(chat_id)
+            userbot_id = userbot.id
+            # Attempt to invite the assistant automatically
             try:
-                await app.approve_chat_join_request(chat_id, userbot_id)
+                if chat_member_update.chat.username:
+                    await userbot.join_chat(chat_member_update.chat.username)
+                else:
+                    invite_link = await app.create_chat_invite_link(chat_id, expire_date=None)
+                    await userbot.join_chat(invite_link.invite_link)
+                print(f"Assistant joined chat {chat_id} automatically.")
+            except InviteRequestSent:
+                try:
+                    await app.approve_chat_join_request(chat_id, userbot_id)
+                except Exception as e:
+                    print(f"Error approving join request: {e}")
             except Exception as e:
-                print(f"Error approving join request: {e}")
-        except Exception as e:
-            print(f"Error in auto-joining assistant: {e}")
-
+                print(f"Error in auto-joining assistant: {e}")
 
 @app.on_message(
     filters.group & filters.command(["userbotjoin", "ujoin"]) & ~filters.private
