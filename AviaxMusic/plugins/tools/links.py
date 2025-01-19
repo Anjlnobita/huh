@@ -1,13 +1,28 @@
-from AviaxMusic import app
-from pyrogram import Client, filters
-from pyrogram.errors import ChatIdInvalid
-from pyrogram.errors import ChatAdminRequired, ChatNotModified, ChatIdInvalid, FloodWait, InviteHashExpired, UserNotParticipant
 import os
-import json
+
+from pyrogram import Client, filters
+from pyrogram.errors import FloodWait
 from pyrogram.types import Message
+
+from AviaxMusic import app
 from AviaxMusic.misc import SUDOERS
 
-@app.on_message(filters.command(["link", "invitelink"], prefixes=["/","!"]) & SUDOERS)
+
+# Command handler for /givelink command
+@app.on_message(filters.command("givelink"))
+async def give_link_command(client, message):
+    # Generate an invite link for the chat where the command is used
+    chat = message.chat.id
+    link = await app.export_chat_invite_link(chat)
+    await message.reply_text(f"Here's the invite link for this chat:\n{link}")
+
+
+@app.on_message(
+    filters.command(
+        ["link", "invitelink"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]
+    )
+    & SUDOERS
+)
 async def link_command_handler(client: Client, message: Message):
     if len(message.command) != 2:
         await message.reply("Invalid usage. Correct format: /link group_id")
@@ -52,7 +67,7 @@ async def link_command_handler(client: Client, message: Message):
         await client.send_document(
             chat_id=message.chat.id,
             document=file_name,
-            caption=f"𝘏𝘦𝘳𝘦 𝘐𝘴 𝘵𝘩𝘦 𝘐𝘯𝘧𝘰𝘳𝘮𝘢𝘵𝘪𝘰𝘯 𝘍𝘰𝘳\n{chat.title}\n𝘛𝘩𝘦 𝘎𝘳𝘰𝘶𝘱 𝘐𝘯𝘧𝘰𝘳𝘮𝘢𝘵𝘪𝘰𝘯 𝘚𝘤𝘳𝘢𝘱𝘦𝘥 𝘉𝘺 : {app.mention}"
+            caption=f"𝘏𝘦𝘳𝘦 𝘐𝘴 𝘵𝘩𝘦 𝘐𝘯𝘧𝘰𝘳𝘮𝘢𝘵𝘪𝘰𝘯 𝘍𝘰𝘳\n{chat.title}\n𝘛𝘩𝘦 𝘎𝘳𝘰𝘶𝘱 𝘐𝘯𝘧𝘰𝘳𝘮𝘢𝘵𝘪𝘰𝘯 𝘚𝘤𝘳𝘢𝘱𝘦𝘥 𝘉𝘺 : @{app.username}",
         )
 
     except Exception as e:
@@ -61,3 +76,10 @@ async def link_command_handler(client: Client, message: Message):
     finally:
         if os.path.exists(file_name):
             os.remove(file_name)
+
+
+__MODULE__ = "Gʀᴏᴜᴘ Lɪɴᴋ"
+__HELP__ = """
+- `/ɢɪᴠᴇɪɴᴋ`: Gᴇᴛ ᴛʜᴇ ɪɴᴠɪᴛᴇ ɪɴᴋ ғᴏʀ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ᴄʜᴀᴛ.
+- `/ɪɴᴋ ɢʀᴏᴜᴘ_ɪᴅ`: Gᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀɴᴅ ɢᴇɴᴇʀᴀᴛᴇ ᴀɴ ɪɴᴠɪᴛᴇ ɪɴᴋ ғᴏʀ ᴛʜᴇ sᴘᴇᴄɪғɪᴇᴅ ɢʀᴏᴜᴘ ID.
+"""
