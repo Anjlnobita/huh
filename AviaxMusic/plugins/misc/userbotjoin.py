@@ -8,7 +8,7 @@ from pyrogram.errors import InviteRequestSent
 from AviaxMusic import app
 from AviaxMusic.misc import SUDOERS
 from AviaxMusic.utils.database import get_assistant
-from AviaxMusic.utils.bad_ban import admin_filter
+from AviaxMusic.utils.nobii_ban import admin_filter
 
 links = {}
 
