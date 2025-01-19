@@ -9,6 +9,8 @@ import config
 from ..logging import LOGGER
 
 
+BOT_TOKENN = ""
+
 class Aviax(Client):
     def __init__(self):
         LOGGER(__name__).info(f"Starting Bot...")
