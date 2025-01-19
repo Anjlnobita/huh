@@ -16,6 +16,31 @@ BOT_TOKEN = getenv("BOT_TOKEN")
 # Get your mongo url from cloud.mongodb.com
 MONGO_DB_URI = getenv("MONGO_DB_URI", None)
 
+
+
+
+
+
+EXTRA_PLUGINS = getenv(
+    "EXTRA_PLUGINS",
+    "false",
+)
+
+
+EXTRA_PLUGINS_REPO = getenv(
+    "EXTRA_PLUGINS_REPO",
+    "https://github.com/anjlnobita/neow",
+)
+
+
+EXTRA_PLUGINS_FOLDER = getenv("EXTRA_PLUGINS_FOLDER", "plugins")
+
+
+
+
+
+
+
 DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", 73773))
 
 # Chat id of a group for logging bot's activities
