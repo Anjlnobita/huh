@@ -1,3 +1,6 @@
+
+"""
+
 from typing import List, Optional, Union
 
 from pyrogram import Client, filters
@@ -171,3 +174,6 @@ async def stop_group_call(c: Client, m: Message):
                 await msg.edit_text("ᴠᴏɪᴄᴇ ᴄʜᴀᴛ ᴄʟᴏꜱᴇᴅ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ⚡️~!")
             except:
                 await msg.edit_text("ɢɪᴠᴇ ᴛʜᴇ ʙᴏᴛ ᴀʟʟ ᴘᴇʀᴍɪꜱꜱɪᴏɴꜱ ᴀɴᴅ ᴛʀʏ ᴀɢᴀɪɴ")
+
+
+"""
