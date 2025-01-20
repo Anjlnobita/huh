@@ -1,3 +1,4 @@
+"""
 from pyrogram import filters
 from pyrogram.types import Message
 
@@ -74,3 +75,5 @@ async def check_ass(client, message: Message, _):
         "**Yᴏᴜʀ ᴄʜᴀᴛ's ᴀssɪsᴛᴀɴᴛ ᴅᴇᴛᴀɪʟs:**\nAssɪsᴛᴀɴᴛ Nᴀᴍᴇ :- {a.name}\nAssɪsᴛᴀɴᴛ\nUsᴇʀɴᴀᴍᴇ :- @{a.username}\nAssɪsᴛᴀɴᴛ ID:- {a.id}",
         disable_web_page_preview=True,
     )
+
+"""
