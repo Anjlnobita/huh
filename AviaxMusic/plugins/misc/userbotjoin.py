@@ -1,3 +1,5 @@
+"""
+
 import asyncio
 
 from pyrogram import filters
@@ -225,7 +227,7 @@ async def leave_all(client, message):
             message.chat.id,
             f"**✅ ʟᴇғᴛ ғʀᴏᴍ:* {left} chats.\n**❌ ғᴀɪʟᴇᴅ ɪɴ:** {failed} chats.",
         )
-
+"""
 
 __MODULES__ = "ᴜsᴇʀʙᴏᴛᴊᴏɪɴ"
 __HELP__ = """
