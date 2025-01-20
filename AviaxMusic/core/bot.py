@@ -9,8 +9,6 @@ import config
 from ..logging import LOGGER
 
 
-BOT_TOKENN = "8035442845:AAH4jjTU4HjB89AuF7IcuZT1vXxWLLGcxJI"
-
 class Aviax(Client):
     def __init__(self):
         LOGGER(__name__).info(f"Starting Bot...")
@@ -66,7 +64,7 @@ class nobita(Client):
             name="meow",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            bot_token=BOT_TOKENN,
+            bot_token=config.BOT_TOKEN,
             in_memory=True,
             parse_mode=ParseMode.DEFAULT,
         )
